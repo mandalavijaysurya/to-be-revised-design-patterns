@@ -1,0 +1,173 @@
+@startuml Builder Design Pattern
+
+title <b><size:40>Builder Design Pattern</size>
+
+class Director {
+    {method} + makeSUV(builder: Builder)
+    {method} + makeSportsCar(builder: Builder)
+    {method} + makeSedanCar(builder: Builder)
+}
+
+interface Builder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+}
+
+interface CarBuilder extends Builder {
+    {method} + getResult(): Car
+}
+
+interface CarManualBuilder extends Builder {
+    {method} + getResult(): CarManual
+}
+
+class SedanCarBuilder implements CarBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): Car
+}
+
+class SedanCarManualBuilder implements CarManualBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): CarManual
+}
+
+class SportsCarBuilder implements CarBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): Car
+}
+
+class SportsCarManualBuilder implements CarManualBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): CarManual
+}
+
+class SUVCarBuilder implements CarBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): Car
+}
+class SUVCarManualBuilder implements CarManualBuilder {
+    {method} + reset()
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: string)
+    {method} + setTripComputer(tripComputer: TripComputer)
+    {method} + setGPS(gps: Gps)
+    {method} + getResult(): CarManual
+}
+abstract class Car {
+    {field} - seats: int
+    {field} - engine: string
+    {field} - tripComputer: TripComputer
+    {field} - gps: Gps
+}
+
+class SedanCar extends Car {
+
+}
+
+class SportsCar extends Car {
+
+}
+
+class SUVCar extends Car {
+
+}
+
+interface Engine {
+    {method} + getRPM()
+}
+
+class SedanCarEngine implements Engine {
+
+}
+
+class SportsCarEngine implements Engine {
+
+}
+
+class SUVCarEngine implements Engine {
+
+}
+
+interface Gps{
+    {method} + accuracy()
+}
+
+class HeavyFeatureGps implements Gps{
+}
+
+class MinimalFeatureGps implements Gps{
+}
+
+interface TripComputer{
+    {method} + functionality()
+}
+
+class HeavyFeaturedTripComputer implements TripComputer{
+}
+
+class LessFeaturedTripComputer implements TripComputer{
+}
+
+abstract class Manual {
+    {field} # seats: int
+    {field} # engine: string
+    {field} # tripComputer: TripComputer
+    {field} # gps: Gps
+
+    {method} + getSeats(): int
+    {method} + getEngine(): Engine
+    {method} + getTripComputer(): TripComputer
+    {method} + getGps(): Gps
+    {method} + abstract setSeats(seats: int)
+    {method} + abstract setEngine(engine: Engine)
+    {method} + abstract setTripComputer(tripComputer: TripComputer)
+    {method} + abstract setGps(gps: Gps)
+}
+
+class SedanCarManual extends Manual {
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: Engine)
+    {method} + setTrip(tripComputer: TripComputer)
+    {method} + printManual(gps: Gps)
+}
+
+class SportsCarManual extends Manual {
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: Engine)
+    {method} + setTrip(tripComputer: TripComputer)
+    {method} + printManual(gps: Gps)
+}
+
+class SUVCarManual extends Manual {
+    {method} + setSeats(seats: int)
+    {method} + setEngine(engine: Engine)
+    {method} + setTrip(tripComputer: TripComputer)
+    {method} + printManual(gps: Gps)
+}
+
+
+
+@enduml

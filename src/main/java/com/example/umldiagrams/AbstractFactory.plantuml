@@ -1,0 +1,78 @@
+@startuml AbstractFactory Design Pattern
+title <b><size:40>Abstract Factory Design Pattern</size></b>
+    interface FurnitureFactory {
+        {method} + createChair(): Chair
+        {method} + createSofa(): Sofa
+        {method} + createCoffeeTable(): CoffeeTable
+    }
+
+    class VictorianFurnitureFactory implements FurnitureFactory {
+        {method} + createChair(): Chair
+        {method} + createSofa(): Sofa
+        {method} + createCoffeeTable(): CoffeeTable
+    }
+
+    class ModernFurnitureFactory implements FurnitureFactory {
+        {method} + createChair(): Chair
+        {method} + createSofa(): Sofa
+        {method} + createCoffeeTable(): CoffeeTable
+    }
+
+    class ArtDecor implements FurnitureFactory {
+        {method} + createChair(): Chair
+        {method} + createSofa(): Sofa
+        {method} + createCoffeeTable(): CoffeeTable
+    }
+
+    interface Chair {
+        {method} + sitOn(): void
+    }
+
+    interface Sofa {
+        {method} + lieOn(): void
+    }
+
+    interface CoffeeTable {
+        {method} + putCoffeeOn(): void
+    }
+
+    class VictorianChair implements Chair {
+        {method} + sitOn(): void
+    }
+
+    class VictorianSofa implements Sofa {
+        {method} + lieOn(): void
+    }
+
+    class VictorianCoffeeTable implements CoffeeTable {
+        {method} + putCoffeeOn(): void
+    }
+
+    class ModernChair implements Chair {
+        {method} + sitOn(): void
+    }
+
+    class ModernSofa implements Sofa {
+        {method} + lieOn(): void
+    }
+
+    class ModernCoffeeTable implements CoffeeTable {
+        {method} + putCoffeeOn(): void
+    }
+
+    class ArtDecorChair implements Chair {
+        {method} + sitOn(): void
+    }
+
+    class ArtDecorSofa implements Sofa {
+        {method} + lieOn(): void
+    }
+
+    class ArtDecorCoffeeTable implements CoffeeTable {
+        {method} + putCoffeeOn(): void
+    }
+
+    FurnitureFactory <.. Chair
+    FurnitureFactory <.. Sofa
+    FurnitureFactory <.. CoffeeTable
+@enduml

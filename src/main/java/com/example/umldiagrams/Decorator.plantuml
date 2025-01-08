@@ -1,0 +1,38 @@
+@startuml Decorator Design pattern
+
+interface Datasource {
+    +writeData(data: String)
+    +readData(): String
+}
+
+class DatasourceDecorator implements Datasource {
+    {field} -datasource: Datasource
+    {method} +writeData(data: String)
+    {method} +readData(): String
+}
+
+class FileDatasource extends DatasourceDecorator {
+
+    {field} -filename: String
+
+    {method} +writeData(data: String)
+    {method} +readData(): String
+}
+
+class EncryptionDatasource extends DatasourceDecorator {
+
+    {method} +writeData(data: String)
+    {method} +readData(): String
+    {method} +encrypt(data: String): String
+    {method} +decrypt(data: String): String
+}
+
+class CompressionDatasource extends DatasourceDecorator {
+    {field} -compressionLevel: int
+    {method} +writeData(data: String)
+    {method} +readData(): String
+    {method} +compress(data: String): String
+    {method} +decompress(data: String): String
+}
+
+Datasource o-- DatasourceDecorator
