@@ -1,0 +1,53 @@
+@startuml Bridge Design Pattern
+title <b> <size: 40>Bridge Design Pattern </size></b>
+
+class Remote {
+    {field}     - device : Device
+    {method}    + togglePower()
+    {method}    + volumeUp() : int
+    {method}    + volumeDown() : int
+    {method}    + channelUp() : int
+    {method}    + channeDown() : int
+    {method}    + getDevice() : Device
+}
+
+class AdvancedRemote extends Remote {
+    {method}    + mute() : int
+}
+
+interface Device {
+    {abstract} + isEnabled() : boolean
+    {abstract} + enable()
+    {abstract} + disable()
+    {abstract} + getVolume() : int
+    {abstract} + setVolume(percent : int)
+    {abstract} + getChannel() : int
+    {abstract} + setChannel(channel : int)
+    {abstract} + getName() : String
+    {abstract} + getDeviceStatus : DeviceStatus
+}
+
+class Radio implements Device {
+    {field} - isDeviceEnabled  : boolean
+    {field} - volume : int
+    {field} - frequency : int
+    {field} - name : String
+}
+
+class Tv implements Device {
+    {field} - isDeviceEnabled  : boolean
+    {field} - volume : int
+    {field} - frequency : int
+    {field} - name : String
+}
+
+enum DeviceStatus {
+    POWEREDON
+    TURNEDOFF
+}
+
+Remote *-- Device
+
+Device --- DeviceStatus
+
+@enduml
